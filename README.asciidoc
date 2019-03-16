@@ -1,0 +1,2 @@
+image:https://img.shields.io/badge/License-MIT-brightgreen.svg["LICENSE", link="https://github.com/Jahidul007/Product-Ratings-Analysis-Based-On-Online-User-Ratings/blob/master/LICENSE"] 
+# Product-Ratings-Analysis
