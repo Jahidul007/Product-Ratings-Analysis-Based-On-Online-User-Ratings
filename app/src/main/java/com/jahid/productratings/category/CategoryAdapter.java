@@ -1,4 +1,4 @@
-package com.jahid.productratings.Category;
+package com.jahid.productratings.category;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -10,9 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.jahid.productratings.R;
-
-
-import java.util.List;
 
 public class CategoryAdapter extends ArrayAdapter<String> {
 

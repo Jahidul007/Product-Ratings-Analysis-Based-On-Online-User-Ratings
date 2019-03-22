@@ -17,8 +17,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.jahid.productratings.Category.Category;
-import com.jahid.productratings.Category.CategoryAdapter;
+import com.jahid.productratings.category.Category;
+import com.jahid.productratings.category.CategoryAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;

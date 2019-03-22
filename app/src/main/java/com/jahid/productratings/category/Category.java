@@ -1,4 +1,4 @@
-package com.jahid.productratings.Category;
+package com.jahid.productratings.category;
 
 public class Category {
     private String name ;
