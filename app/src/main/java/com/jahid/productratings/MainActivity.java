@@ -1,5 +1,6 @@
 package com.jahid.productratings;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -19,6 +22,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.jahid.productratings.category.Category;
 import com.jahid.productratings.category.CategoryAdapter;
+import com.jahid.productratings.model.Function;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
+    private Context context;
     private SliderLayout mDemoSlider;
     private ListView listView;
 
@@ -44,13 +49,12 @@ public class MainActivity extends AppCompatActivity
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         listView = (ListView) findViewById(R.id.list_view);
 
-        String[] list = {"Mobile", "Laptop", "Camera", "Book","Sun-glass","Smartwatch", "Tablet","Food"};
-        List<String> stringList = Arrays.asList( list );
+        String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
+        List<String> stringList = Arrays.asList(list);
         categoryList = new ArrayList<>();
 
 
-
-        for (int i = 0; i<list.length; i++){
+        for (int i = 0; i < list.length; i++) {
 
 
         }
@@ -58,20 +62,44 @@ public class MainActivity extends AppCompatActivity
         listView.setAdapter(adapter);
 
 
-
-        HashMap<String, String> url_maps = new HashMap<String, String>();
+        final HashMap<String, String> url_maps = new HashMap<String, String>();
         url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
         url_maps.put("Game of Thrones", "https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg");
 
-        for (String name : url_maps.keySet()) {
+        for (final String name : url_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
+            final String url = url_maps.get(name);
+
+            final String[] newUrl = url.split("\\/");
+
+            for (String w : newUrl) {
+                System.out.println(w);
+            }
+            System.out.println("url : " + newUrl[2]);
             textSliderView
                     .description(name)
                     .image(url_maps.get(name))
-                    .setOnSliderClickListener(this);
+                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                        @Override
+                        public void onSliderClick(BaseSliderView slider) {
+                            Toast.makeText(getApplicationContext(), "Image Clicked", Toast.LENGTH_SHORT).show();
+
+                            if (Function.isNetworkAvailable(getApplicationContext())) {
+
+                                Intent intent = new Intent(getApplicationContext(), WebActivity.class);
+
+                                intent.putExtra("address", newUrl[2]);
+
+                                getApplicationContext().startActivity(intent);
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
 
             //add your extra information
             textSliderView.bundle(new Bundle());
@@ -79,11 +107,13 @@ public class MainActivity extends AppCompatActivity
                     .putString("extra", name);
 
             mDemoSlider.addSlider(textSliderView);
+
+
         }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(2000);
+        mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
 
 

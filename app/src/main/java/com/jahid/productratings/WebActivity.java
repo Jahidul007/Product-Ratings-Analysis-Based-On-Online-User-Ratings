@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
@@ -21,6 +22,7 @@ public class WebActivity extends AppCompatActivity {
     private ProgressBar spinner;
     Button button1;
     TextView textView1;
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,9 @@ public class WebActivity extends AppCompatActivity {
             webSetting.setJavaScriptEnabled(true);
             webSetting.setDisplayZoomControls(true);
 
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+
             textView1 = (TextView) findViewById(R.id.view_pager);
             button1 = findViewById(R.id.button);
             spinner = (ProgressBar) findViewById(R.id.progressBar1);
@@ -43,7 +48,9 @@ public class WebActivity extends AppCompatActivity {
                 textView1.setVisibility(View.INVISIBLE);
                 button1.setVisibility(View.INVISIBLE);
                 webView.setWebViewClient(new MyWebViewClient());
-                String url = "http://tutorsbangladesh.com/";
+                extras = getIntent().getExtras();
+                //String url = "http://tutorsbangladesh.com/";
+                String url = "https://" + extras.getString("address");
                 webView.loadUrl(url);
             } else {
                 textView1.setVisibility(View.VISIBLE);
@@ -58,7 +65,7 @@ public class WebActivity extends AppCompatActivity {
                             textView1.setVisibility(View.INVISIBLE);
                             button1.setVisibility(View.INVISIBLE);
                             webView.setWebViewClient(new MyWebViewClient());
-                            String url = "http://tutorsbangladesh.com/";
+                            String url = "https://www.google.com/";
                             webView.loadUrl(url);
                         }
                     }
@@ -92,6 +99,17 @@ public class WebActivity extends AppCompatActivity {
             view.setVisibility(webView.VISIBLE);
             super.onPageFinished(view, url);
         }
+
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        } else {
+            finish();
+            return true;
+        }
+    }
 }
