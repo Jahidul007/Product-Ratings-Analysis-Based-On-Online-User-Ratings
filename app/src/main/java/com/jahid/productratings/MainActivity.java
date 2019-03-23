@@ -66,8 +66,9 @@ public class MainActivity extends AppCompatActivity
         final HashMap<String, MyKey> url_maps = new HashMap<String, MyKey>();
         url_maps.put("Hannibal", new MyKey("hypable.com", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg"));
         url_maps.put("Big Bang Theory", new MyKey("google.com", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png"));
-        url_maps.put("House of Cards", new MyKey("netflix.com","http://cdn3.nflximg.net/images/3093/2043093.jpg"));
-        url_maps.put("Game of Thrones", new MyKey("hbo.com/game-of-thrones","https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg"));
+        url_maps.put("House of Cards", new MyKey("netflix.com", "http://cdn3.nflximg.net/images/3093/2043093.jpg"));
+        url_maps.put("Game of Thrones", new MyKey("hbo.com/game-of-thrones", "https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg"));
+        url_maps.put("GitHub", new MyKey("github.com/Jahidul007", "https://avatars2.githubusercontent.com/u/26745548?s=460&v=4"));
 
         System.out.println("url_maps: " + url_maps);
         /*url_maps.put("Big Bang Theory", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png");
