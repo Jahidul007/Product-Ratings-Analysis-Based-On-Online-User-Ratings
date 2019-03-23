@@ -23,6 +23,7 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.jahid.productratings.category.Category;
 import com.jahid.productratings.category.CategoryAdapter;
 import com.jahid.productratings.model.Function;
+import com.jahid.productratings.model.MyKey;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,26 +63,34 @@ public class MainActivity extends AppCompatActivity
         listView.setAdapter(adapter);
 
 
-        final HashMap<String, String> url_maps = new HashMap<String, String>();
-        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
-        url_maps.put("Big Bang Theory", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png");
+        final HashMap<String, MyKey> url_maps = new HashMap<String, MyKey>();
+        url_maps.put("Hannibal", new MyKey("hypable.com", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg"));
+        url_maps.put("Big Bang Theory", new MyKey("google.com", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png"));
+        url_maps.put("House of Cards", new MyKey("netflix.com","http://cdn3.nflximg.net/images/3093/2043093.jpg"));
+        url_maps.put("Game of Thrones", new MyKey("hbo.com/game-of-thrones","https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg"));
+
+        System.out.println("url_maps: " + url_maps);
+        /*url_maps.put("Big Bang Theory", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg");
+        url_maps.put("Game of Thrones", "https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg");*/
 
         for (final String name : url_maps.keySet()) {
+            MyKey key = url_maps.get(name);
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
-            final String url = url_maps.get(name);
+            // final String url1 = url_maps.containsKey();
+            final String url = key.getUrl();
 
-            final String[] newUrl = url.split("\\/");
+        /*    final String[] newUrl = url.split("\\/");
 
             for (String w : newUrl) {
                 System.out.println(w);
-            }
-            System.out.println("url : " + newUrl[2]);
+            }*/
+            System.out.println("name : " + name);
+            System.out.println("url : " + url);
             textSliderView
                     .description(name)
-                    .image(url_maps.get(name))
+                    .image(key.getImageUrl())
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                         @Override
                         public void onSliderClick(BaseSliderView slider) {
@@ -91,7 +100,7 @@ public class MainActivity extends AppCompatActivity
 
                                 Intent intent = new Intent(getApplicationContext(), WebActivity.class);
 
-                                intent.putExtra("address", newUrl[2]);
+                                intent.putExtra("address", url);
 
                                 getApplicationContext().startActivity(intent);
 
