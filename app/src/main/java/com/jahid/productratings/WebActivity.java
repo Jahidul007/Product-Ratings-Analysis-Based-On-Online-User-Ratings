@@ -37,6 +37,7 @@ public class WebActivity extends AppCompatActivity {
 
             webView.getSettings().setJavaScriptEnabled(true);
             webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            webView.getSettings().setDomStorageEnabled(true);
 
             textView1 = (TextView) findViewById(R.id.view_pager);
             button1 = findViewById(R.id.button);

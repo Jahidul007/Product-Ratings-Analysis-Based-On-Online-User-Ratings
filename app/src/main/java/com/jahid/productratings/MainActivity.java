@@ -64,11 +64,10 @@ public class MainActivity extends AppCompatActivity
 
 
         final HashMap<String, MyKey> url_maps = new HashMap<String, MyKey>();
-        url_maps.put("Hannibal", new MyKey("hypable.com", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg"));
-        url_maps.put("Big Bang Theory", new MyKey("google.com", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png"));
-        url_maps.put("House of Cards", new MyKey("netflix.com", "http://cdn3.nflximg.net/images/3093/2043093.jpg"));
-        url_maps.put("Game of Thrones", new MyKey("hbo.com/game-of-thrones", "https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/2017_GameOfThrones_HBO_220817-920x584.jpg"));
-        url_maps.put("GitHub", new MyKey("github.com/Jahidul007", "https://avatars2.githubusercontent.com/u/26745548?s=460&v=4"));
+        url_maps.put("Apple MacBook Pro", new MyKey("amazon.com/Apple-MacBook-Retina-2-3GHz-Quad-Core/dp/B07FKCCZSD/ref=sxin_0_osp19-c77cd4f7_cov?ascsubtag=c77cd4f7-6726-4dc1-bb53-6eed62ca82c9&creativeASIN=B07FKCCZSD&crid=1MRPLQRHDB3P5&cv_ct_id=amzn1.osp.c77cd4f7-6726-4dc1-bb53-6eed62ca82c9&cv_ct_pg=search&cv_ct_wn=osp-search&keywords=laptop&linkCode=oas&pd_rd_i=B07FKCCZSD&pd_rd_r=d34d0f3b-973e-4edb-9b66-404798f1e16c&pd_rd_w=VYR8M&pd_rd_wg=bi5Kz&pf_rd_p=37dcfc87-cdc2-4138-941e-56f6d8e6b463&pf_rd_r=43XGREZE9Q7N8XVKZCXB&qid=1553358425&s=electronics&sprefix=laptop%2Celectronics-intl-ship%2C1015&tag=crverifiedexp-20", "https://images-na.ssl-images-amazon.com/images/I/61SJu997CCL._SL1500_.jpg"));
+        url_maps.put("Samsung Galaxy S8 Plus", new MyKey("walmart.com/ip/Samsung-Galaxy-S8-Plus-SM-G955U-64GB-T-Mobile-Excellent-Refurbished/628848389", "https://i5.walmartimages.com/asr/269783ed-9c6a-482e-ac46-c836dbf098dd_1.0627de63a3dd71510ff2246e5a14b197.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"));
+        url_maps.put("Redmi Note 7 (Onyx Black, 64 GB)", new MyKey("flipkart.com/redmi-note-7-onyx-black-64-gb/p/itmfdzvfrnfsuywx?pid=MOBFDXZ39EGFJDFJ", "https://rukminim1.flixcart.com/image/832/832/jsnjbm80/mobile/d/f/j/mi-redmi-note-7-mzb7265in-original-imafe6b2v5kn6uny.jpeg?q=70"));
+        url_maps.put("প্যারাডক্সিক্যাল সাজিদ ২", new MyKey("rokomari.com/book/178414/paradoxical-sajid-2", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg"));
 
         System.out.println("url_maps: " + url_maps);
         /*url_maps.put("Big Bang Theory", "https://media.comicbook.com/2017/04/big-bang-theory-cast-kaley-cuoco-jim-parsons-992959.png");
@@ -177,6 +176,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             Intent intent = new Intent(getApplicationContext(), WebActivity.class);
+            intent.putExtra("address", "www.flipkart.com");
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 
