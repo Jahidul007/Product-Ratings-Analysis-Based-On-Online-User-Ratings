@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,33 +8,91 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/cardview_compat_inset_shadow"
-        android:layout_marginLeft="@dimen/cardview_compat_inset_shadow">
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/cardview_compat_inset_shadow"
+        android:layout_marginLeft="@dimen/cardview_compat_inset_shadow"
+        android:layout_marginEnd="@dimen/cardview_compat_inset_shadow">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="14dp"
-            android:paddingTop="5dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@color/offWhite">
+
+            <ImageView
+                android:id="@+id/mobile_image"
+                android:layout_width="100dp"
+                android:layout_height="200dp"
+                android:layout_margin="3dp"
+                android:backgroundTintMode="@color/google"
+                android:src="@drawable/pic" />
 
             <TextView
-                android:id="@+id/router_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Title"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:id="@+id/title"
+                android:layout_width="185dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="TextView"
+                android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/router_address_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Description" />
-        </LinearLayout>
+                android:id="@+id/score"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_toEndOf="@+id/title"
+                android:background="@drawable/oval"
+                android:gravity="center"
+                android:text="75"
+                android:textAlignment="center"
+                android:textSize="30sp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="257dp"
+                android:layout_height="89dp"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="61dp"
+                android:layout_marginEnd="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/walmart_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:gravity="fill"
+                    android:text="TextView"
+                    android:textSize="20sp" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_weight="0"
+                    android:background="@color/google" />
+
+                <TextView
+                    android:id="@+id/flipkart_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:gravity="fill"
+                    android:text="TextView"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="258dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/linearLayout"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="3dp"
+                android:textColorHint="#05ab9a" />
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
-
-
 </RelativeLayout>

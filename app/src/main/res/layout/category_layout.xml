@@ -30,7 +30,7 @@
         android:layout_marginBottom="2dp"
         android:gravity="center"
         android:textColor="@color/white"
-        android:background="@drawable/round"
+        android:background="@drawable/circle"
         android:text="50"
         android:textSize="20sp"/>
 </LinearLayout>
