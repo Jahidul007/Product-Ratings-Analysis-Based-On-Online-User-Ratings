@@ -4,35 +4,57 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_mobile"
+            android:icon="@drawable/ic_phone"
+            android:title="Mobile" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_laptop"
+            android:icon="@drawable/ic_laptop"
+            android:title="Laptop" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_book"
+            android:icon="@drawable/ic_library_books"
+            android:title="Book" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="My List">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_favorite"
+                android:icon="@drawable/ic_favorite"
+                android:title="Favorite" />
         </menu>
     </item>
+
+    <group
+        android:id="@+id/group_feature"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navdrawer_item_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Share" />
+        <item
+            android:id="@+id/navdrawer_item_rate"
+            android:icon="@drawable/ic_star"
+            android:title="Rate this app" />
+
+    </group>
+    <group
+        android:id="@+id/group_settings"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navdrawer_item_settings"
+            android:title="settings" />
+        <item
+            android:id="@+id/navdrawer_item_help"
+            android:title="Help" />
+        <item
+            android:id="@+id/navdrawer_item_about"
+            android:title="About" />
+
+    </group>
 
 </menu>

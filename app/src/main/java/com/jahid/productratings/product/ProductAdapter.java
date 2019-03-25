@@ -51,18 +51,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         float total_rating = (((product.getFlipkart_rating_no() * product.getFlipkart_rating())
                 + (product.getWalmart_rating_no() * product.getWalmart_rating()))
-                /(product.getWalmart_rating_no()+product.getFlipkart_rating_no()))*20;
+                / (product.getWalmart_rating_no() + product.getFlipkart_rating_no())) * 20;
 
         Picasso.with(context).load(product.getImage()).into(holder.imageView);
         holder.title.setText(product.getTitle());
         holder.our_rating.setText(String.valueOf(total_rating));
-        holder.walmart_text.setText("Walmart "+product.getWalmart_rating());
-        holder.flipkart_text.setText("Flipkart "+product.getFlipkart_rating());
+        holder.walmart_text.setText("Walmart " + product.getWalmart_rating());
+        holder.flipkart_text.setText("Flipkart " + product.getFlipkart_rating());
 
         String w_price = String.valueOf(product.getWalmart_price());
         String f_price = String.valueOf(product.getFlipkart_price());
 
-        String[] spinnerArray = {"Walmart.com  \t$"+w_price,"Flipkart.com \t$"+f_price};
+        String[] spinnerArray = {"Walmart.com  \t$" + w_price, "Flipkart.com \t$" + f_price};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerArray);
         holder.spinner.setAdapter(adapter);
@@ -74,7 +74,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder  {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
         public TextView title;
@@ -87,7 +87,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-           // itemView.setOnClickListener(this);
+            // itemView.setOnClickListener(this);
 
             imageView = (ImageView) itemView.findViewById(R.id.mobile_image);
             title = (TextView) itemView.findViewById(R.id.title);

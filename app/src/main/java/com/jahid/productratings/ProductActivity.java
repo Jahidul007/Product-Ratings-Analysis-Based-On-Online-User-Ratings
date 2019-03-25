@@ -19,6 +19,7 @@ public class ProductActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Product> mobileList;
     private RecyclerView.Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,18 +30,18 @@ public class ProductActivity extends AppCompatActivity {
         mobileList = new ArrayList<>();
         String image = "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg";
 
-        Product product1 = new Product("Mobile","https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 5.0f, 5.0f,"walmart",
-                33.0f,5.0f,5.0f,"flip");
-        Product product2 = new Product("Mobile","https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 1.0f, 5.0f,"walmart",
-                33.0f,5.0f,5.0f,"flip");
-        Product product3 = new Product("Mobile","https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 3.0f, 5.0f,"walmart",
-                33.0f,4.0f,5.0f,"flip");
-        Product product4 = new Product("Mobile","https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 2.0f, 5.0f,"walmart",
-                33.0f,4.0f,5.0f,"flip");
+        Product product1 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                32.0f, 5.0f, 5.0f, "walmart",
+                33.0f, 5.0f, 5.0f, "flip");
+        Product product2 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                32.0f, 1.0f, 5.0f, "walmart",
+                33.0f, 5.0f, 5.0f, "flip");
+        Product product3 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                32.0f, 3.0f, 5.0f, "walmart",
+                33.0f, 4.0f, 5.0f, "flip");
+        Product product4 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                32.0f, 2.0f, 5.0f, "walmart",
+                33.0f, 4.0f, 5.0f, "flip");
         mobileList.add(product1);
         mobileList.add(product2);
         mobileList.add(product3);
