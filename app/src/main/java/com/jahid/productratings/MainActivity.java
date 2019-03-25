@@ -12,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -49,6 +51,16 @@ public class MainActivity extends AppCompatActivity
 
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         listView = (ListView) findViewById(R.id.list_view);
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
         List<String> stringList = Arrays.asList(list);
@@ -57,10 +69,16 @@ public class MainActivity extends AppCompatActivity
 
         for (int i = 0; i < list.length; i++) {
 
-
         }
         CategoryAdapter adapter = new CategoryAdapter(this, list);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
 
 
         final HashMap<String, MyKey> url_maps = new HashMap<String, MyKey>();

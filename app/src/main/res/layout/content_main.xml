@@ -16,9 +16,16 @@
         android:layout_height="200dp"></com.daimajia.slider.library.SliderLayout>
 
     <ListView
-        android:layout_below="@+id/slider"
+        android:layout_below="@+id/button"
         android:id="@+id/list_view"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ok"
+        android:background="@color/google"
+        android:layout_below="@+id/slider"/>
 </RelativeLayout>

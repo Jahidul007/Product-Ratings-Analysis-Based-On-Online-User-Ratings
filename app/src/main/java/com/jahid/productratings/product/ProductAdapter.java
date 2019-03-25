@@ -8,19 +8,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jahid.productratings.R;
 import com.jahid.productratings.model.Function;
+import com.squareup.picasso.Picasso;
 
-public class ProductAdapter {
+import java.util.List;
 
-    /* extends RecyclerView.Adapter<ProductAdapter.ViewHolder>
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+
+
     private Context context;
-   // private List<LauncherActivity.ListItem> listItems;
+    private List<Product> listItems;
     private ProductAdapter adapter;
 
-    public ProductAdapter(Context context, List<> listItems) {
+    public ProductAdapter(Context context, List<Product> listItems) {
         this.context = context;
         this.listItems = listItems;
     }
@@ -38,10 +46,26 @@ public class ProductAdapter {
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
 
-        LauncherActivity.ListItem item = listItems.get(position);
 
-        holder.title.setText(item.getName());
-        holder.description.setText(item.getAddress());
+        Product product = listItems.get(position);
+
+        float total_rating = (((product.getFlipkart_rating_no() * product.getFlipkart_rating())
+                + (product.getWalmart_rating_no() * product.getWalmart_rating()))
+                /(product.getWalmart_rating_no()+product.getFlipkart_rating_no()))*20;
+
+        Picasso.with(context).load(product.getImage()).into(holder.imageView);
+        holder.title.setText(product.getTitle());
+        holder.our_rating.setText(String.valueOf(total_rating));
+        holder.walmart_text.setText("Walmart "+product.getWalmart_rating());
+        holder.flipkart_text.setText("Flipkart "+product.getFlipkart_rating());
+
+        String w_price = String.valueOf(product.getWalmart_price());
+        String f_price = String.valueOf(product.getFlipkart_price());
+
+        String[] spinnerArray = {"Walmart.com  \t$"+w_price,"Flipkart.com \t$"+f_price};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerArray);
+        holder.spinner.setAdapter(adapter);
 
     }
 
@@ -50,47 +74,44 @@ public class ProductAdapter {
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
 
+        public ImageView imageView;
         public TextView title;
-        public TextView description;
-        public EditText editText;
-        public Button button;
+        public TextView our_rating;
+        public TextView walmart_text;
+        public TextView flipkart_text;
+        public Spinner spinner;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(this);
+           // itemView.setOnClickListener(this);
 
-            title = (TextView) itemView.findViewById(R.id.router_name);
-            description = (TextView) itemView.findViewById(R.id.router_address_id);
-            editText = (EditText) itemView.findViewById(R.id.router_address);
-            button = (Button) itemView.findViewById(R.id.go_button);
+            imageView = (ImageView) itemView.findViewById(R.id.mobile_image);
+            title = (TextView) itemView.findViewById(R.id.title);
+            our_rating = (TextView) itemView.findViewById(R.id.our_rating);
+            walmart_text = (TextView) itemView.findViewById(R.id.walmart_text);
+            flipkart_text = (TextView) itemView.findViewById(R.id.flipkart_text);
+            spinner = (Spinner) itemView.findViewById(R.id.price);
 
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+                    int selectedPosition = i;
+                }
 
-        }
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-        @Override
-        public void onClick(View v) {
+                }
+            });
 
-            //Get position of the row clicked or tapped
-            int position = getAdapterPosition();
-
-            LauncherActivity.ListItem item = listItems.get(position);
-            if (Function.isNetworkAvailable(context)) {
-
-
-                Intent intent = new Intent(context, DetailsActivity.class);
-
-                intent.putExtra("address", item.getAddress());
-
-                context.startActivity(intent);
-
-            } else {
-                Toast.makeText(context, "No Internet Connection", Toast.LENGTH_LONG).show();
-            }
 
         }
-    }*/
+
+
+    }
 }

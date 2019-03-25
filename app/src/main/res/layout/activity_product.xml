@@ -7,12 +7,10 @@
     android:background="@color/offWhite"
     tools:context=".ProductActivity">
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
-    <include layout="@layout/item_list" />
 </RelativeLayout>
