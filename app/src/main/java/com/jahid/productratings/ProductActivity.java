@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jahid.productratings.R;
 import com.jahid.productratings.category.Category;
 import com.jahid.productratings.product.Product;
@@ -16,9 +21,13 @@ import java.util.List;
 
 public class ProductActivity extends AppCompatActivity {
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+
     RecyclerView recyclerView;
     List<Product> mobileList;
     private RecyclerView.Adapter adapter;
+    String mPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +37,15 @@ public class ProductActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.list_id);
 
         mobileList = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("mobile");
+
+        System.out.println("reference: " + myRef);
+
         String image = "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg";
 
-        Product product1 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+        /*Product product1 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
                 32.0f, 5.0f, 5.0f, "walmart",
                 33.0f, 5.0f, 5.0f, "flip");
         Product product2 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
@@ -45,11 +60,55 @@ public class ProductActivity extends AppCompatActivity {
         mobileList.add(product1);
         mobileList.add(product2);
         mobileList.add(product3);
-        mobileList.add(product4);
+        mobileList.add(product4);*/
 
-        adapter = new ProductAdapter(this, mobileList);
+        /*adapter = new ProductAdapter(this, mobileList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                mobileList.clear();
+
+                for (DataSnapshot brandSnapshot : dataSnapshot.getChildren()) {
+
+                    Product product = brandSnapshot.getValue(Product.class);
+
+                    System.out.println("Product: " + product);
+
+                    mPrice = brandSnapshot.child("Title").getValue(String.class);
+
+
+                    //String s  =String.valueOf(mPrice);
+
+                    //System.out.println(s);
+                    Product product4 = new Product(mPrice, "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                            32.0f, 2.0f, 5.0f, "walmart",
+                            33.0f, 4.0f, 5.0f, "flip");
+                    System.out.println("Title: " + mPrice);
+                    mobileList.add(product4);
+                    //mobileList.add(product);
+
+                }
+                adapter = new ProductAdapter(getApplicationContext(), mobileList);
+                recyclerView.setHasFixedSize(true);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
