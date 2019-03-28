@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/offWhite"
+    android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
-        android:layout_height="200dp"></com.daimajia.slider.library.SliderLayout>
+        android:layout_height="270dp"></com.daimajia.slider.library.SliderLayout>
 
     <ListView
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/buttonLaptop"
         android:id="@+id/list_view"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -24,8 +27,38 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ok"
+        android:layout_height="70dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Phone         "
+        android:drawableLeft="@drawable/ic_phone"
         android:background="@color/google"
         android:layout_below="@+id/slider"/>
+    <Button
+        android:id="@+id/buttonLaptop"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Laptop         "
+        android:drawableLeft="@drawable/ic_laptop"
+        android:background="@color/google"
+        android:layout_below="@+id/button"/>
+    <Button
+        android:id="@+id/buttonBook"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Book         "
+        android:drawableLeft="@drawable/ic_library_books"
+        android:background="@color/google"
+        android:layout_below="@+id/buttonLaptop"/>
 </RelativeLayout>
+</ScrollView>

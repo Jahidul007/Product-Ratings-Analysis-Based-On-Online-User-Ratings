@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -85,6 +86,7 @@ public class ProductActivity extends AppCompatActivity {
 
                     mPrice = brandSnapshot.child("Title").getValue(String.class);
 
+                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
                     //String s  =String.valueOf(mPrice);
 

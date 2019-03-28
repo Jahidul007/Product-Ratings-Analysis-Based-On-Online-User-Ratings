@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
+        /// List of product category
+        /*String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
         List<String> stringList = Arrays.asList(list);
         categoryList = new ArrayList<>();
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity
 
         }
         CategoryAdapter adapter = new CategoryAdapter(this, list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity
             System.out.println("url : " + url);
             textSliderView
                     .description(name)
+                    .setScaleType(BaseSliderView.ScaleType.CenterInside)
                     .image(key.getImageUrl())
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                         @Override
