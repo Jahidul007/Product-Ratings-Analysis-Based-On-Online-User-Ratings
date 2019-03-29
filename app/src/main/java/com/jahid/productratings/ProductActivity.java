@@ -28,7 +28,8 @@ public class ProductActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Product> mobileList;
     private RecyclerView.Adapter adapter;
-    String mPrice;
+    String[] mTitle;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +85,22 @@ public class ProductActivity extends AppCompatActivity {
 
                     System.out.println("Product: " + product);
 
-                    mPrice = brandSnapshot.child("Title").getValue(String.class);
+                    title = brandSnapshot.child("Title").getValue(String.class);
 
                     Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
                     //String s  =String.valueOf(mPrice);
-
+                    String[] words=title.split("\\s");//splits the string based on whitespace
+                    //using java foreach loop to print elements of string array
+                    for(String w:words){
+                        System.out.println(w);
+                    }
+                    String title = words[0]+" "+words[1]+" "+words[2]+" "+words[3];
                     //System.out.println(s);
-                    Product product4 = new Product(mPrice, "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
+                    Product product4 = new Product(title, "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
                             32.0f, 2.0f, 5.0f, "walmart",
                             33.0f, 4.0f, 5.0f, "flip");
-                    System.out.println("Title: " + mPrice);
+                    System.out.println("Title: " + words);
                     mobileList.add(product4);
                     //mobileList.add(product);
 
