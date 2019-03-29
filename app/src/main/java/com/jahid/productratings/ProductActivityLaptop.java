@@ -1,7 +1,7 @@
 package com.jahid.productratings;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,16 +11,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.jahid.productratings.R;
-import com.jahid.productratings.category.Category;
 import com.jahid.productratings.product.Product;
 import com.jahid.productratings.product.ProductAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivityLaptop extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -30,7 +27,6 @@ public class ProductActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     String[] mTitle;
     String title;
-    String imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +38,7 @@ public class ProductActivity extends AppCompatActivity {
         mobileList = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("mobile");
+        myRef = database.getReference("laptop");
 
         System.out.println("reference: " + myRef);
 

@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+        Button laptop = (Button) findViewById(R.id.buttonLaptop);
+        laptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ProductActivityLaptop.class);
+                startActivity(intent);
+
+            }
+        });
 
         /// List of product category
         /*String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
@@ -195,11 +205,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_mobile) {
-            Intent intent = new Intent(getApplicationContext(), WebActivity.class);
-            intent.putExtra("address", "www.flipkart.com");
+            Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_laptop) {
-            Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ProductActivityLaptop.class);
             startActivity(intent);
         }
 
