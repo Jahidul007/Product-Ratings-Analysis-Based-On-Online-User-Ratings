@@ -71,6 +71,16 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+        Button book = (Button) findViewById(R.id.buttonBook);
+        book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), ProductActivityBook.class);
+                startActivity(intent);
+
+            }
+        });
 
         /// List of product category
         /*String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};

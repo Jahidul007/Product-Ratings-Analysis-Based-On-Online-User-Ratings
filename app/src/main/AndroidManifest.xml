@@ -31,6 +31,7 @@
         <activity android:name=".WebActivity" />
         <activity android:name=".ProductActivity"></activity>
         <activity android:name=".ProductActivityLaptop"></activity>
+        <activity android:name=".ProductActivityBook"></activity>
     </application>
 
 </manifest>

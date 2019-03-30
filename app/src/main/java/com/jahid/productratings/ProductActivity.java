@@ -87,6 +87,8 @@ public class ProductActivity extends AppCompatActivity {
                     System.out.println("Product: " + product);
 
                     title = brandSnapshot.child("Title").getValue(String.class);
+                    imageUrl = brandSnapshot.child("Image").getValue(String.class);
+
 
                     Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
@@ -98,8 +100,7 @@ public class ProductActivity extends AppCompatActivity {
                     }
                     String title = words[0]+" "+words[1]+" "+words[2]+" "+words[3];
                     //System.out.println(s);
-                    Product product4 = new Product(title, "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                            32.0f, 2.0f, 5.0f, "walmart",
+                    Product product4 = new Product(title, imageUrl, 32.0f, 2.0f, 5.0f, "walmart",
                             33.0f, 4.0f, 5.0f, "flip");
                     System.out.println("Title: " + words);
                     mobileList.add(product4);

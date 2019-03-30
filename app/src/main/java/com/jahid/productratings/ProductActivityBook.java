@@ -17,7 +17,7 @@ import com.jahid.productratings.product.ProductAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductActivityLaptop extends AppCompatActivity {
+public class ProductActivityBook extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -39,7 +39,7 @@ public class ProductActivityLaptop extends AppCompatActivity {
         mobileList = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("laptop");
+        myRef = database.getReference("book");
 
         System.out.println("reference: " + myRef);
 
@@ -67,6 +67,7 @@ public class ProductActivityLaptop extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -83,23 +84,16 @@ public class ProductActivityLaptop extends AppCompatActivity {
 
                     System.out.println("Product: " + product);
 
-                    title = brandSnapshot.child("Title").getValue(String.class);
-                    imageUrl = brandSnapshot.child("Image").getValue(String.class);
+                    title = brandSnapshot.child("title").getValue(String.class);
+                    imageUrl = brandSnapshot.child("image").getValue(String.class);
 
-                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
-                    //String s  =String.valueOf(mPrice);
-                    String[] words=title.split("\\s");//splits the string based on whitespace
-                    //using java foreach loop to print elements of string array
-                    for(String w:words){
-                        System.out.println(w);
-                    }
-                    String title = words[0]+" "+words[1]+" "+words[2]+" "+words[3];
-                    //System.out.println(s);
+                    Log.e(dataSnapshot.getKey(), dataSnapshot.getChildrenCount() + "");
+
                     Product product4 = new Product(title, imageUrl,
                             32.0f, 2.0f, 5.0f, "walmart",
                             33.0f, 4.0f, 5.0f, "flip");
-                    System.out.println("Title: " + words);
+                    //System.out.println("Title: " + words);
                     mobileList.add(product4);
                     //mobileList.add(product);
 
@@ -108,8 +102,6 @@ public class ProductActivityLaptop extends AppCompatActivity {
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-
             }
 
             @Override
