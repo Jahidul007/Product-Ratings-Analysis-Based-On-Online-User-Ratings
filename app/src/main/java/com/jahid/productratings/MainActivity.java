@@ -23,12 +23,9 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.jahid.productratings.category.Category;
-import com.jahid.productratings.category.CategoryAdapter;
 import com.jahid.productratings.model.Function;
 import com.jahid.productratings.model.MyKey;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProductActivityMobile.class);
                 startActivity(intent);
 
             }
@@ -82,17 +79,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        /// List of product category
-        /*String[] list = {"Mobile", "Laptop", "Camera", "Book", "Sun-glass", "Smartwatch", "Tablet", "Food"};
-        List<String> stringList = Arrays.asList(list);
-        categoryList = new ArrayList<>();
-
-
-        for (int i = 0; i < list.length; i++) {
-
-        }
-        CategoryAdapter adapter = new CategoryAdapter(this, list);
-        listView.setAdapter(adapter);*/
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -215,7 +201,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_mobile) {
-            Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ProductActivityMobile.class);
             startActivity(intent);
         } else if (id == R.id.nav_laptop) {
             Intent intent = new Intent(getApplicationContext(), ProductActivityLaptop.class);

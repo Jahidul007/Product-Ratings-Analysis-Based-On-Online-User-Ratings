@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ProductActivity extends AppCompatActivity {
+public class ProductActivityMobile extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef;

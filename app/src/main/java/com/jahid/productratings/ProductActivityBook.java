@@ -44,28 +44,6 @@ public class ProductActivityBook extends AppCompatActivity {
         System.out.println("reference: " + myRef);
 
         String image = "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg";
-
-        /*Product product1 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 5.0f, 5.0f, "walmart",
-                33.0f, 5.0f, 5.0f, "flip");
-        Product product2 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 1.0f, 5.0f, "walmart",
-                33.0f, 5.0f, 5.0f, "flip");
-        Product product3 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 3.0f, 5.0f, "walmart",
-                33.0f, 4.0f, 5.0f, "flip");
-        Product product4 = new Product("Mobile", "https://s3-ap-southeast-1.amazonaws.com/rokomari110/productNew/260X372/2b532fb15_178414.jpg",
-                32.0f, 2.0f, 5.0f, "walmart",
-                33.0f, 4.0f, 5.0f, "flip");
-        mobileList.add(product1);
-        mobileList.add(product2);
-        mobileList.add(product3);
-        mobileList.add(product4);*/
-
-        /*adapter = new ProductAdapter(this, mobileList);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));*/
     }
 
     @Override
