@@ -71,7 +71,7 @@
                     android:gravity="fill"
                     android:layout_marginLeft="10dp"
                     android:text="TextView"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <View
                     android:id="@+id/divider"
@@ -88,7 +88,7 @@
                     android:gravity="fill"
                     android:text="TextView"
                     android:layout_marginLeft="10dp"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <Spinner
                     android:id="@+id/price"

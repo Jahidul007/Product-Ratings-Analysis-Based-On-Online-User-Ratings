@@ -60,7 +60,7 @@ public class ProductActivityBook extends AppCompatActivity {
 
                     Product product = brandSnapshot.getValue(Product.class);
 
-                    System.out.println("Product: " + product);
+                    System.out.println("Laptop: " + product);
 
                     title = brandSnapshot.child("title").getValue(String.class);
                     imageUrl = brandSnapshot.child("image").getValue(String.class);
@@ -69,8 +69,8 @@ public class ProductActivityBook extends AppCompatActivity {
                     Log.e(dataSnapshot.getKey(), dataSnapshot.getChildrenCount() + "");
 
                     Product product4 = new Product(title, imageUrl,
-                            32.0f, 2.0f, 5.0f, "walmart",
-                            33.0f, 4.0f, 5.0f, "flip");
+                            "32.0f", 2.0f, 5.0f, "walmart",
+                            "33.0f", 4.0f, 5.0f, "flip");
                     //System.out.println("Title: " + words);
                     mobileList.add(product4);
                     //mobileList.add(product);

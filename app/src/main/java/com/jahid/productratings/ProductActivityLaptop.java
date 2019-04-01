@@ -61,7 +61,7 @@ public class ProductActivityLaptop extends AppCompatActivity {
 
                     Product product = brandSnapshot.getValue(Product.class);
 
-                    System.out.println("Product: " + product);
+                    System.out.println("Laptop: " + product);
 
                     title = brandSnapshot.child("Title").getValue(String.class);
                     imageUrl = brandSnapshot.child("Image").getValue(String.class);
@@ -77,8 +77,8 @@ public class ProductActivityLaptop extends AppCompatActivity {
                     String title = words[0]+" "+words[1]+" "+words[2]+" "+words[3];
                     //System.out.println(s);
                     Product product4 = new Product(title, imageUrl,
-                            32.0f, 2.0f, 5.0f, "walmart",
-                            33.0f, 4.0f, 5.0f, "flip");
+                            "32.0f", 2.0f, 5.0f, "walmart",
+                            "33.0f", 4.0f, 5.0f, "flip");
                     System.out.println("Title: " + words);
                     mobileList.add(product4);
                     //mobileList.add(product);

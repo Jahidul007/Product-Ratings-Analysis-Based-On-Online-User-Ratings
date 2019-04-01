@@ -51,7 +51,7 @@ public class WebActivity extends AppCompatActivity {
                 webView.setWebViewClient(new MyWebViewClient());
                 extras = getIntent().getExtras();
                 //String url = "http://tutorsbangladesh.com/";
-                String url = "https://" + extras.getString("address");
+                String url =extras.getString("address");
                 webView.loadUrl(url);
             } else {
                 textView1.setVisibility(View.VISIBLE);

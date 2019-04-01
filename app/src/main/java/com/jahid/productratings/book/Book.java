@@ -1,6 +1,6 @@
-package com.jahid.productratings.product;
+package com.jahid.productratings.book;
 
-public class Product {
+public class Book {
     String title;
     String image;
 
@@ -15,12 +15,12 @@ public class Product {
     String flipkart_link;
 
 
-    public Product() {
+    public Book() {
     }
 
-    public Product(String title, String image, String walmart_price, float walmart_rating,
-                   float walmart_rating_no, String walmart_link, String flipkart_price,
-                   float flipkart_rating, float flipkart_rating_no, String flipkart_link) {
+    public Book(String title, String image, String walmart_price, float walmart_rating,
+                float walmart_rating_no, String walmart_link, String flipkart_price,
+                float flipkart_rating, float flipkart_rating_no, String flipkart_link) {
         this.title = title;
         this.image = image;
         this.walmart_price = walmart_price;

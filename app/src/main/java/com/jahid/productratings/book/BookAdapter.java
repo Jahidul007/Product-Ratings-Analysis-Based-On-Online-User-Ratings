@@ -1,4 +1,4 @@
-package com.jahid.productratings.product;
+package com.jahid.productratings.book;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,19 +17,20 @@ import android.widget.Toast;
 import com.jahid.productratings.R;
 import com.jahid.productratings.WebActivity;
 import com.jahid.productratings.model.Function;
+import com.jahid.productratings.product.Product;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
 
     private Context context;
     private List<Product> listItems;
-    private ProductAdapter adapter;
+    private BookAdapter adapter;
 
-    public ProductAdapter(Context context, List<Product> listItems) {
+    public BookAdapter(Context context, List<Product> listItems) {
         this.context = context;
         this.listItems = listItems;
     }
@@ -45,7 +46,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
 
 
         final Product product = listItems.get(position);
