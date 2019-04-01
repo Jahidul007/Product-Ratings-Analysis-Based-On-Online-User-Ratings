@@ -27,10 +27,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
 
     private Context context;
-    private List<Product> listItems;
+    private List<Book> listItems;
     private BookAdapter adapter;
 
-    public BookAdapter(Context context, List<Product> listItems) {
+    public BookAdapter(Context context, List<Book> listItems) {
         this.context = context;
         this.listItems = listItems;
     }
@@ -49,36 +49,47 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
 
 
-        final Product product = listItems.get(position);
+        final Book product = listItems.get(position);
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
 
-        float total_rating = (((product.getFlipkart_rating_no() * product.getFlipkart_rating())
-                + (product.getWalmart_rating_no() * product.getWalmart_rating()))
-                / (product.getWalmart_rating_no() + product.getFlipkart_rating_no())) * 20;
+        /*String boibazarRating = product.getBoibazarRating() ;
+        String boibazarNoOfVote = product.getBoibazar_noOfRated();
+        String rokomariRating = product.getRokomari_rating();
+        String rokomariNoOfVote = product.getRokomari_noOfrated();*/
+
+        //System.out.println(boibazarRating + " " + boibazarNoOfVote + " " + rokomariRating + " " + rokomariNoOfVote);
+
+        Float totalBoizarRating = (Float.parseFloat(product.getBoibazarRating())* Float.parseFloat( product.getBoibazar_noOfRated()));
+        Float totalRokomariRating = (Float.parseFloat(product.getRokomari_rating())* Float.parseFloat( product.getRokomari_noOfrated()));
+        Float total_vote =Float.parseFloat( product.getBoibazar_noOfRated()) + Float.parseFloat(product.getRokomari_noOfrated());
+
+        System.out.println(totalBoizarRating + " " + totalRokomariRating + " " + total_vote);
+        float total_rating = ((totalBoizarRating + totalRokomariRating)/total_vote)*20;
 
         Picasso.with(context).load(product.getImage()).into(holder.imageView);
-        holder.title.setText(product.getTitle());
+        holder.title.setText(product.getTitle()+"\n"+ product.getAuthor());
+        holder.title.setTextSize(15);
         holder.our_rating.setText(String.valueOf(df.format(total_rating)));
        // System.out.println("flipcart rating: " + product.getFlipkart_rating());
-        holder.walmart_text.setText("Walmart Rating: " + df.format(product.getWalmart_rating()));
-        holder.flipkart_text.setText("Flipkart Rating: " + df.format(product.getFlipkart_rating()));
+        holder.walmart_text.setText("Boibazar Rating: " + product.getBoibazarRating());
+        holder.flipkart_text.setText("Rokomari Rating: " + product.getRokomari_rating());
 
-        String w_price = String.valueOf(product.getWalmart_price());
-        String f_price = String.valueOf(product.getFlipkart_price());
+        String boibazar_price = String.valueOf(product.getBoibazar_price());
+        String rokonari_price = String.valueOf(product.getRokomari_price());
 
-        String[] words = f_price.split(",");//splits the string based on whitespace
+        /*String[] words = f_price.split(",");//splits the string based on whitespace
         //using java foreach loop to print elements of string array
         for (String w : words) {
             System.out.println(w);
         }
         String title = words[0]+ words[1];
         System.out.println("price : "+title);
-        float flipkart_Price = Float.parseFloat(title);
+        float flipkart_Price = Float.parseFloat(title);*/
 
 
-        String[] spinnerArray = {"Go To Shop","Walmart.com  \t" + w_price, "Flipkart.com \t$" +flipkart_Price/70.0 };
+        String[] spinnerArray = {"Go To Shop","Boibazar.com  \t" + boibazar_price, "Rokomari.com \t$" +rokonari_price};
         String[] SA = {"yes","no"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -134,19 +145,19 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
             int code = spinner.getSelectedItemPosition();
 
-            Product item = listItems.get(position);
+            Book item = listItems.get(position);
             if (Function.isNetworkAvailable(context)) {
 
 
                 Intent intent = new Intent(context, WebActivity.class);
 
                 if (code == 1) {
-                    intent.putExtra("address", item.getWalmart_link());
+                    intent.putExtra("address", item.getBoibazar_url());
                     context.startActivity(intent);
                 }
                 if (code == 2){
-                    if(item.getFlipkart_link().contains(".com")){
-                        intent.putExtra("address", item.getFlipkart_link());
+                    if(item.getRokomari_url().contains(".com")){
+                        intent.putExtra("address", item.getRokomari_url());
                         context.startActivity(intent);
                     } else
                         Toast.makeText(context,"Information is not available",Toast.LENGTH_SHORT).show();

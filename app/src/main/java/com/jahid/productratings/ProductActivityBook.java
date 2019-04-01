@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jahid.productratings.book.Book;
+import com.jahid.productratings.book.BookAdapter;
 import com.jahid.productratings.product.Product;
 import com.jahid.productratings.product.ProductAdapter;
 
@@ -23,11 +25,21 @@ public class ProductActivityBook extends AppCompatActivity {
     DatabaseReference myRef;
 
     RecyclerView recyclerView;
-    List<Product> mobileList;
+    List<Book> mobileList;
     private RecyclerView.Adapter adapter;
     String[] mTitle;
+
     String title;
     String imageUrl;
+    String author;
+    String boibazar_noOfRated;
+    String boibazar_price;
+    String boibazarRating;
+    String boibazar_url;
+    String rokomari_noOfrated;
+    String rokomari_price;
+    String rokomari_rating;
+    String rokomari_url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,20 +75,29 @@ public class ProductActivityBook extends AppCompatActivity {
                     System.out.println("Laptop: " + product);
 
                     title = brandSnapshot.child("title").getValue(String.class);
+                    author = brandSnapshot.child("author").getValue(String.class);
                     imageUrl = brandSnapshot.child("image").getValue(String.class);
+                    boibazar_price = brandSnapshot.child("boibazar_price").getValue(String.class);
+                    boibazar_noOfRated = brandSnapshot.child("boibazar_noOfRated").getValue(String.class);
+                    boibazarRating = brandSnapshot.child("boibazar_rating").getValue(String.class);
+                    boibazar_url = brandSnapshot.child("boibazar_url").getValue(String.class);
+                    rokomari_url = brandSnapshot.child("rokomari_url").getValue(String.class);
+                    rokomari_price = brandSnapshot.child("rokomari_price").getValue(String.class);
+                    rokomari_rating = brandSnapshot.child("rokomari_rating").getValue(String.class);
+                    rokomari_noOfrated = brandSnapshot.child("rokomari_noOfrated").getValue(String.class);
 
 
                     Log.e(dataSnapshot.getKey(), dataSnapshot.getChildrenCount() + "");
 
-                    Product product4 = new Product(title, imageUrl,
-                            "32.0f", 2.0f, 5.0f, "walmart",
-                            "33.0f", 4.0f, 5.0f, "flip");
+                    Book product4 = new Book(title, author,
+                            boibazar_noOfRated, boibazar_price, boibazarRating, boibazar_url,
+                            imageUrl, rokomari_noOfrated, rokomari_price, rokomari_rating,rokomari_url);
                     //System.out.println("Title: " + words);
                     mobileList.add(product4);
                     //mobileList.add(product);
 
                 }
-                adapter = new ProductAdapter(getApplicationContext(), mobileList);
+                adapter = new BookAdapter(getApplicationContext(), mobileList);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

@@ -1,36 +1,39 @@
 package com.jahid.productratings.book;
 
+import java.util.Objects;
+
 public class Book {
+
     String title;
+    String author;
+    String boibazar_noOfRated;
+    String boibazar_price;
+    String boibazarRating;
+    String boibazar_url;
     String image;
-
-    String walmart_price;
-    float walmart_rating;
-    float walmart_rating_no;
-    String walmart_link;
-
-    String flipkart_price;
-    float flipkart_rating;
-    float flipkart_rating_no;
-    String flipkart_link;
-
+    String rokomari_noOfrated;
+    String rokomari_price;
+    String rokomari_rating;
+    String rokomari_url;
 
     public Book() {
     }
 
-    public Book(String title, String image, String walmart_price, float walmart_rating,
-                float walmart_rating_no, String walmart_link, String flipkart_price,
-                float flipkart_rating, float flipkart_rating_no, String flipkart_link) {
+    public Book(String title, String author, String boibazar_noOfRated,
+                String boibazar_price, String boibazarRating, String boibazar_url,
+                String image, String rokomari_noOfrated, String rokomari_price,
+                String rokomari_rating, String rokomari_url) {
         this.title = title;
+        this.author = author;
+        this.boibazar_noOfRated = boibazar_noOfRated;
+        this.boibazar_price = boibazar_price;
+        this.boibazarRating = boibazarRating;
+        this.boibazar_url = boibazar_url;
         this.image = image;
-        this.walmart_price = walmart_price;
-        this.walmart_rating = walmart_rating;
-        this.walmart_rating_no = walmart_rating_no;
-        this.walmart_link = walmart_link;
-        this.flipkart_price = flipkart_price;
-        this.flipkart_rating = flipkart_rating;
-        this.flipkart_rating_no = flipkart_rating_no;
-        this.flipkart_link = flipkart_link;
+        this.rokomari_noOfrated = rokomari_noOfrated;
+        this.rokomari_price = rokomari_price;
+        this.rokomari_rating = rokomari_rating;
+        this.rokomari_url = rokomari_url;
     }
 
     public String getTitle() {
@@ -41,6 +44,46 @@ public class Book {
         this.title = title;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getBoibazar_noOfRated() {
+        return boibazar_noOfRated;
+    }
+
+    public void setBoibazar_noOfRated(String boibazar_noOfRated) {
+        this.boibazar_noOfRated = boibazar_noOfRated;
+    }
+
+    public String getBoibazar_price() {
+        return boibazar_price;
+    }
+
+    public void setBoibazar_price(String boibazar_price) {
+        this.boibazar_price = boibazar_price;
+    }
+
+    public String getBoibazarRating() {
+        return boibazarRating;
+    }
+
+    public void setBoibazarRating(String boibazarRating) {
+        this.boibazarRating = boibazarRating;
+    }
+
+    public String getBoibazar_url() {
+        return boibazar_url;
+    }
+
+    public void setBoibazar_url(String boibazar_url) {
+        this.boibazar_url = boibazar_url;
+    }
+
     public String getImage() {
         return image;
     }
@@ -49,68 +92,76 @@ public class Book {
         this.image = image;
     }
 
-    public float getWalmart_rating() {
-        return walmart_rating;
+    public String getRokomari_noOfrated() {
+        return rokomari_noOfrated;
     }
 
-    public void setWalmart_rating(float walmart_rating) {
-        this.walmart_rating = walmart_rating;
+    public void setRokomari_noOfrated(String rokomari_noOfrated) {
+        this.rokomari_noOfrated = rokomari_noOfrated;
     }
 
-    public float getWalmart_rating_no() {
-        return walmart_rating_no;
+    public String getRokomari_price() {
+        return rokomari_price;
     }
 
-    public void setWalmart_rating_no(float walmart_rating_no) {
-        this.walmart_rating_no = walmart_rating_no;
+    public void setRokomari_price(String rokomari_price) {
+        this.rokomari_price = rokomari_price;
     }
 
-    public String getWalmart_link() {
-        return walmart_link;
+    public String getRokomari_rating() {
+        return rokomari_rating;
     }
 
-    public void setWalmart_link(String walmart_link) {
-        this.walmart_link = walmart_link;
+    public void setRokomari_rating(String rokomari_rating) {
+        this.rokomari_rating = rokomari_rating;
     }
 
-
-    public float getFlipkart_rating() {
-        return flipkart_rating;
+    public String getRokomari_url() {
+        return rokomari_url;
     }
 
-    public void setFlipkart_rating(float flipkart_rating) {
-        this.flipkart_rating = flipkart_rating;
+    public void setRokomari_url(String rokomari_url) {
+        this.rokomari_url = rokomari_url;
     }
 
-    public float getFlipkart_rating_no() {
-        return flipkart_rating_no;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author) &&
+                Objects.equals(boibazar_noOfRated, book.boibazar_noOfRated) &&
+                Objects.equals(boibazar_price, book.boibazar_price) &&
+                Objects.equals(boibazarRating, book.boibazarRating) &&
+                Objects.equals(boibazar_url, book.boibazar_url) &&
+                Objects.equals(image, book.image) &&
+                Objects.equals(rokomari_noOfrated, book.rokomari_noOfrated) &&
+                Objects.equals(rokomari_price, book.rokomari_price) &&
+                Objects.equals(rokomari_rating, book.rokomari_rating) &&
+                Objects.equals(rokomari_url, book.rokomari_url);
     }
 
-    public void setFlipkart_rating_no(float flipkart_rating_no) {
-        this.flipkart_rating_no = flipkart_rating_no;
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(title, author, boibazar_noOfRated, boibazar_price, boibazarRating, boibazar_url, image, rokomari_noOfrated, rokomari_price, rokomari_rating, rokomari_url);
     }
 
-    public String getWalmart_price() {
-        return walmart_price;
-    }
-
-    public void setWalmart_price(String walmart_price) {
-        this.walmart_price = walmart_price;
-    }
-
-    public String getFlipkart_price() {
-        return flipkart_price;
-    }
-
-    public void setFlipkart_price(String flipkart_price) {
-        this.flipkart_price = flipkart_price;
-    }
-
-    public String getFlipkart_link() {
-        return flipkart_link;
-    }
-
-    public void setFlipkart_link(String flipkart_link) {
-        this.flipkart_link = flipkart_link;
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", boibazar_noOfRated='" + boibazar_noOfRated + '\'' +
+                ", boibazar_price='" + boibazar_price + '\'' +
+                ", boibazarRating='" + boibazarRating + '\'' +
+                ", boibazar_url='" + boibazar_url + '\'' +
+                ", image='" + image + '\'' +
+                ", rokomari_noOfrated='" + rokomari_noOfrated + '\'' +
+                ", rokomari_price='" + rokomari_price + '\'' +
+                ", rokomari_rating='" + rokomari_rating + '\'' +
+                ", rokomari_url='" + rokomari_url + '\'' +
+                '}';
     }
 }

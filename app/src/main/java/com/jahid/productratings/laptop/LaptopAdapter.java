@@ -27,10 +27,10 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
 
 
     private Context context;
-    private List<Product> listItems;
+    private List<Laptop> listItems;
     private LaptopAdapter adapter;
 
-    public LaptopAdapter(Context context, List<Product> listItems) {
+    public LaptopAdapter(Context context, List<Laptop> listItems) {
         this.context = context;
         this.listItems = listItems;
     }
@@ -49,7 +49,7 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
     public void onBindViewHolder(@NonNull LaptopAdapter.ViewHolder holder, int position) {
 
 
-        final Product product = listItems.get(position);
+        final Laptop product = listItems.get(position);
 
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
@@ -63,22 +63,22 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
         holder.our_rating.setText(String.valueOf(df.format(total_rating)));
        // System.out.println("flipcart rating: " + product.getFlipkart_rating());
         holder.walmart_text.setText("Walmart Rating: " + df.format(product.getWalmart_rating()));
-        holder.flipkart_text.setText("Flipkart Rating: " + df.format(product.getFlipkart_rating()));
+        holder.flipkart_text.setText("Amazon Rating: " + df.format(product.getFlipkart_rating()));
 
         String w_price = String.valueOf(product.getWalmart_price());
         String f_price = String.valueOf(product.getFlipkart_price());
 
-        String[] words = f_price.split(",");//splits the string based on whitespace
+       /* String[] words = f_price.split(",");//splits the string based on whitespace
         //using java foreach loop to print elements of string array
         for (String w : words) {
             System.out.println(w);
         }
         String title = words[0]+ words[1];
         System.out.println("price : "+title);
-        float flipkart_Price = Float.parseFloat(title);
+        float flipkart_Price = Float.parseFloat(title);*/
 
 
-        String[] spinnerArray = {"Go To Shop","Walmart.com  \t" + w_price, "Flipkart.com \t$" +flipkart_Price/70.0 };
+        String[] spinnerArray = {"Go To Shop","Walmart.com  \t" + w_price, "Amazon.com \t$" +f_price };
         String[] SA = {"yes","no"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -134,7 +134,7 @@ public class LaptopAdapter extends RecyclerView.Adapter<LaptopAdapter.ViewHolder
 
             int code = spinner.getSelectedItemPosition();
 
-            Product item = listItems.get(position);
+            Laptop item = listItems.get(position);
             if (Function.isNetworkAvailable(context)) {
 
 

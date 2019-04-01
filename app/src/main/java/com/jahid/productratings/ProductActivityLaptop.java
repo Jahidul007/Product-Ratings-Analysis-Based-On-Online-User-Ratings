@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.jahid.productratings.laptop.Laptop;
+import com.jahid.productratings.laptop.LaptopAdapter;
 import com.jahid.productratings.product.Product;
 import com.jahid.productratings.product.ProductAdapter;
 
@@ -23,11 +25,20 @@ public class ProductActivityLaptop extends AppCompatActivity {
     DatabaseReference myRef;
 
     RecyclerView recyclerView;
-    List<Product> mobileList;
+    List<Laptop> laptopList;
     private RecyclerView.Adapter adapter;
     String[] mTitle;
+
     String title;
     String imageUrl;
+    String walmart_price;
+    String walmart_link;
+    float walmart_rating;
+    float walmart_voted;
+    String amazon_link;
+    String amazon_price;
+    float amazon_rating;
+    float amazon_voted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +47,7 @@ public class ProductActivityLaptop extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.list_id);
 
-        mobileList = new ArrayList<>();
+        laptopList = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("laptop");
@@ -55,7 +66,7 @@ public class ProductActivityLaptop extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                mobileList.clear();
+                laptopList.clear();
 
                 for (DataSnapshot brandSnapshot : dataSnapshot.getChildren()) {
 
@@ -65,6 +76,14 @@ public class ProductActivityLaptop extends AppCompatActivity {
 
                     title = brandSnapshot.child("Title").getValue(String.class);
                     imageUrl = brandSnapshot.child("Image").getValue(String.class);
+                    walmart_price = brandSnapshot.child("Price").getValue(String.class);
+                    walmart_link = brandSnapshot.child("Link").getValue(String.class);
+                    walmart_rating = brandSnapshot.child("Rating").getValue(Float.class);
+                    walmart_voted = brandSnapshot.child("Voted").getValue(Float.class);
+                    amazon_link = brandSnapshot.child("Amazon Link").getValue(String.class);
+                    amazon_price = brandSnapshot.child("Amazon Price").getValue(String.class);
+                    amazon_rating = brandSnapshot.child("Amazon Rating").getValue(Float.class);
+                    amazon_voted = brandSnapshot.child("Amazon Voted").getValue(Float.class);
 
                     Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
@@ -76,15 +95,15 @@ public class ProductActivityLaptop extends AppCompatActivity {
                     }
                     String title = words[0]+" "+words[1]+" "+words[2]+" "+words[3];
                     //System.out.println(s);
-                    Product product4 = new Product(title, imageUrl,
-                            "32.0f", 2.0f, 5.0f, "walmart",
-                            "33.0f", 4.0f, 5.0f, "flip");
+                    Laptop laptop = new Laptop(title, imageUrl,
+                            walmart_price, walmart_rating, walmart_rating, walmart_link,
+                            amazon_price, amazon_rating, amazon_voted, amazon_link);
                     System.out.println("Title: " + words);
-                    mobileList.add(product4);
+                    laptopList.add(laptop);
                     //mobileList.add(product);
 
                 }
-                adapter = new ProductAdapter(getApplicationContext(), mobileList);
+                adapter = new LaptopAdapter(getApplicationContext(), laptopList);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
