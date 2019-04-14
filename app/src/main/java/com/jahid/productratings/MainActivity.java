@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getApplicationContext(), ProductActivityBook.class);
+                Intent intent = new Intent(getApplicationContext(), BookAnalysisActivity.class);
                 startActivity(intent);
 
             }

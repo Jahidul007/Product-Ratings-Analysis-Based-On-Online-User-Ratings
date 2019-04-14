@@ -35,7 +35,7 @@
         android:text="Phone         "
         android:drawableLeft="@drawable/ic_phone"
         android:background="@color/google"
-        android:layout_below="@+id/slider"/>
+        android:layout_below="@+id/buttonBook"/>
     <Button
         android:id="@+id/buttonLaptop"
         android:layout_width="match_parent"
@@ -59,6 +59,6 @@
         android:text="Book         "
         android:drawableLeft="@drawable/ic_library_books"
         android:background="@color/google"
-        android:layout_below="@+id/buttonLaptop"/>
+        android:layout_below="@+id/slider"/>
 </RelativeLayout>
 </ScrollView>

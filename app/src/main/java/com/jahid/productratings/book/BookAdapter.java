@@ -40,7 +40,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list, parent, false);
+                .inflate(R.layout.book_item, parent, false);
 
         return new ViewHolder(view);
     }
@@ -89,7 +89,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         float flipkart_Price = Float.parseFloat(title);*/
 
 
-        String[] spinnerArray = {"Go To Shop","Boibazar.com  \t" + boibazar_price, "Rokomari.com \t$" +rokonari_price};
+        String[] spinnerArray = {"Go To Shop","Boibazar.com  \t" + boibazar_price, "Rokomari.com \t" +rokonari_price};
         String[] SA = {"yes","no"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

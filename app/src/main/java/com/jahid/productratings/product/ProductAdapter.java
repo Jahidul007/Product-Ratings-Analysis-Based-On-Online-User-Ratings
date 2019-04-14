@@ -77,7 +77,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         float flipkart_Price = Float.parseFloat(title);
 
 
-        String[] spinnerArray = {"Go To Shop","Walmart.com  \t" + w_price, "Flipkart.com \t$" +flipkart_Price/70.0 };
+        String[] spinnerArray = {"Go To Shop","Walmart.com  \t" + w_price, "Flipkart.com \t$" +df.format(flipkart_Price/70.0) };
         String[] SA = {"yes","no"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

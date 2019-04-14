@@ -32,6 +32,7 @@
         <activity android:name=".ProductActivityMobile"></activity>
         <activity android:name=".ProductActivityLaptop"></activity>
         <activity android:name=".ProductActivityBook"></activity>
+        <activity android:name=".BookAnalysisActivity"></activity>
     </application>
 
 </manifest>
