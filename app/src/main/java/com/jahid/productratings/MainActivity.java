@@ -206,6 +206,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_laptop) {
             Intent intent = new Intent(getApplicationContext(), ProductActivityLaptop.class);
             startActivity(intent);
+        } else if (id == R.id.nav_book) {
+            Intent intent = new Intent(getApplicationContext(), BookAnalysisActivity.class);
+            startActivity(intent);
         }
 
 
