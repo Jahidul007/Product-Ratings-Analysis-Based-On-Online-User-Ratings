@@ -65,6 +65,8 @@ public class BookAnalysisAdapter extends RecyclerView.Adapter<BookAnalysisAdapte
         Float total_vote =Float.parseFloat( product.getBoibazar_noOfRated()) + Float.parseFloat(product.getRokomari_noOfrated());
 
         System.out.println(totalBoizarRating + " " + totalRokomariRating + " " + total_vote);
+
+        // calculation equation
         float total_rating = ((totalBoizarRating + totalRokomariRating)/total_vote)*20;
 
         Picasso.with(context).load(product.getImage()).into(holder.imageView);
